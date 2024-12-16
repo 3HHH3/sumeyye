@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="tr">
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <head>
@@ -146,3 +146,200 @@
     </div>
   </body>
 </html>
+-->
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Son Dakika Haber Şeridi</title>
+    <style>
+        body {
+            font-family: "Open Sans", Helvetica, sans-serif;
+             margin: 0; /* Sayfa kenarlarındaki boşluğu kaldır */
+        }
+
+        .icon {
+            font-family: FontAwesome;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .fa-spin2:before {
+            content: '\f192';
+            font-size: 13px;
+        }
+
+        .base-container {
+            background: none repeat scroll 0 0 #d82827;
+            height: 37px;
+            overflow: hidden;
+            z-index: 1;
+            width: 100%; /* Genişliği %100 yap */
+             display: flex;
+            align-items: center;
+            box-sizing: border-box; /* padding ve borderı width'e dahil et */
+        }
+
+        .last-minute-title {
+            float: left;
+            padding-left: 4px;
+            margin-right: 7px;
+            position: relative;
+            color: #fff;
+            background: #b82323;
+             white-space: nowrap;
+            flex-shrink: 0;
+            padding-right: 10px;
+        }
+
+        .last-minute-title span {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 37px;
+            margin: 0 10px 0 0px;
+        }
+
+        .last-minute-title:after {
+            left: 100%;
+            top: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-color: rgba(136, 183, 213, 0);
+            border-left-color: #b82323;
+            border-width: 6px;
+            margin-top: -6px;
+        }
+
+        .scroll-content {
+            overflow: hidden;
+            height: 37px;
+            position: relative;
+            flex-grow: 1;
+             display: flex;
+            align-items: center;
+
+        }
+
+        .scroll-content .overview {
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .scroll-content li {
+            margin-right: 30px;
+            padding-right: 30px;
+            position: relative;
+            float: left;
+        }
+
+        .blink {
+            color: #fff;
+        }
+
+        .overview {
+            left: 0px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .overview li {
+            display: inline-block;
+            padding: 0px 15px;
+        }
+
+        .overview li a {
+            color: #fff;
+            display: block;
+            font-size: 14px;
+            line-height: 36.7px;
+            text-decoration: none;
+        }
+
+         marquee {
+            margin: 0;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+             display: block;
+             box-sizing: border-box; /* padding ve borderı width'e dahil et */
+         }
+
+          /* Mobil cihazlar için responsive ayarlamalar */
+        @media (max-width: 768px) {
+                .last-minute-title {
+                    padding-left: 2px;
+                    padding-right: 5px;
+                    margin-right: 3px;
+                 }
+
+                .last-minute-title span {
+                    font-size: 10px;
+                 margin: 0 5px 0 0px;
+                   
+                }
+
+                .fa-spin2:before {
+                    font-size: 10px;
+                }
+        .overview li{
+           padding: 0px 5px;
+            margin-right: 10px;
+          }
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="base-container">
+        <div class="last-minute-title">
+            <i class="icon fa-spin2  blink"></i>
+            <span>SON DAKİKA</span>
+        </div>
+        <div class="scroll-content">
+           <marquee  direction="left" scrollamount="5" onMouseOver="this.stop()" onMouseOut="this.start()">
+                <ul class="overview">
+                    <li><a href="#">Ben senin istediğin zaman, canın sıkıldığında, hele ki boş vakitlerinde eğlendirecek, güldürecek ve motive edecek bir palyaço değilim. Kendine başka palyaçolar bulmalısın. Defalarca denememe ve söylememe rağmen, senin yüzünden hiçbir yere varamıyoruz. Ne sen benim istediğim gibi düzeliyorsun ne de ben senin istediğin gibi değişiyorum. Bu saatten sonra barışsak bile bu, ancak intikam amaçlı bir barış olur. O yüzden artık birbirimizi unutmamız en iyisi. Yolun açık olsun.</a></li>
+                </ul>
+            </marquee>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        (function($) {
+            $.fn.blink = function(options) {
+                var defaults = {
+                    delay: 500
+                };
+                var options = $.extend(defaults, options);
+
+                return this.each(function() {
+                    var obj = $(this);
+                    setInterval(function() {
+                        if ($(obj).css("visibility") == "visible") {
+                            $(obj).css('visibility', 'hidden');
+                        } else {
+                            $(obj).css('visibility', 'visible');
+                        }
+                    }, options.delay);
+                });
+            }
+        }(jQuery));
+        $(document).ready(function() {
+            $('.blink').blink();
+        });
+    </script>
+</body>
+</html>
+
+
